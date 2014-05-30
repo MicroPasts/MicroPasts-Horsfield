@@ -1,5 +1,5 @@
-PyBossa demo application tagging pictures
-======================================
+PyBossa photo tagging application
+=================================
 
 This application has three files:
 

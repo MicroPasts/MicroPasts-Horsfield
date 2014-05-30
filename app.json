@@ -1,7 +1,7 @@
 {
-    "name": "Tagging pictures",
-    "short_name": "taggingpictures",
-    "thumbnail": "http://farm1.staticflickr.com/117/260004685_8d78d77db0_q.jpg",
-    "description": "Do you know this person?",
-    "question": "Tag the picture"
+    "name": "Photo Tagging of UCL Horsfield Archive",
+    "short_name": "phototagging",
+    "thumbnail": "http://adi.micropasts.org/wp-content/uploads/sites/3/2014/05/horsfield_thumbnail.jpg",
+    "description": "What do you see in this photograph?",
+    "question": "Tag the photograph"
 }

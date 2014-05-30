@@ -1,26 +1,31 @@
-<div class="row">
-    <div class="span12">
-        <div id="modal" class="modal hide fade">
-            <div class="modal-header">
-                <h3>Tagging pictures tutorial</h3>
-            </div>
+<div id="modal" class="modal fade">
+   <div class="modal-dialog">
+      <div class="modal-content">
+
+         <div class="modal-header"><h3>Tagging Photos Tutorial</h3></div>
+
             <div id="0" class="modal-body" style="display:none">
-                <p><strong>Hi!</strong> This is a <strong>demo application</strong> that shows how you can tag parts of pictures using the PyBossa framework in Crowdcrafting.org.
-               </p> 
+                <p>
+                The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you this question: <strong>Tag all the elements that you recognise</strong></p>.
+                <p>You then hover the mouse over tha elements that you identify, and draw a box clicking in the image, and you will be able to type the name of that element and save it.</p>
+                <p>You can do it as many times as you want. Simple, right? Now let's try it!
+                </p> 
             </div>
             <div id="1" class="modal-body" style="display:none">
-                <p>The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you this question: <strong>Tag all the faces that you know</strong></p>.
-                <p>You then hover the mouse over tha faces that you know, and draw a box clicking in the image, and you will be able to type the name of the person and save it.</p>
-                <p>You can do it as many times as you want. Simple, right? Now let's try it!</p>
+                <p>
+                To find out how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
+                </p> 
             </div>
             <div class="modal-footer">
-                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-                <a id="startContrib" href="../taggingpictures/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Try the demo!</a>
+                <!-- Change the href below -->
+                <a id="startContrib" href="../taggingpictures/newtask" class="btn btn-primary" style="display:none"><i class="glyphicon glyphicon-thumbs-up"></i> Let's start!</a>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     var step = -1;
     function showStep(action) {
