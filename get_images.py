@@ -70,6 +70,7 @@ def get_flickr_photos(size="big"):
                       'description': photo['description']})
 
     # Alternative code, refers tp get_flickr_set_photos function:
+    # m = medium size photo, b = big photo. Look into Flickr documentation: https://www.flickr.com/services/api/
     #    imgUrl_m = photo["media"]["m"]
     #    imgUrl_b = string.replace(photo["media"]["m"], "_m.jpg", "_b.jpg")
     #    photos.append({'link': photo["link"], 'url_m':  imgUrl_m,
