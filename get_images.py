@@ -20,7 +20,12 @@ import urllib2
 import re
 import json
 import string
+import requests
 
+try:
+    import config
+except:
+    print "You need to create a config.py file (see config.py.template)"
 
 def get_flickr_photos(size="big"):
     """
@@ -35,7 +40,7 @@ def get_flickr_photos(size="big"):
     print('Contacting Flickr for photos')
     url = "http://api.flickr.com/services/feeds/photos_public.gne"
     values = {'nojsoncallback': 1,
-              'ids': '30115723@N02',
+              #'ids': '30115723@N02',
               'format': "json"}
 
     query = url + "?" + urllib.urlencode(values)
@@ -63,4 +68,63 @@ def get_flickr_photos(size="big"):
                       'date_taken': photo["date_taken"],
                       'tags': photo['tags'],
                       'description': photo['description']})
+
+    # Alternative code, refers tp get_flickr_set_photos function:
+    #    imgUrl_m = photo["media"]["m"]
+    #    imgUrl_b = string.replace(photo["media"]["m"], "_m.jpg", "_b.jpg")
+    #    photos.append({'link': photo["link"], 'url_m':  imgUrl_m,
+    #                   'url_b': imgUrl_b})
+    
     return photos
+
+# Code taken from a transcription app:
+
+def get_flickr_set_photos(set_id):
+    """Get public photos from a Flickr set_id and return a list."""
+    url = 'http://api.flickr.com/services/rest/'
+    page = 1
+    payload = dict(
+        method='flickr.photosets.getPhotos',
+        api_key=config.flickr_api_key,
+        photoset_id=set_id,
+        format='json',
+        page=page,
+        nojsoncallback=1)
+
+    # Get the first batch of photos in the the photoset
+    res = requests.get(url, params=payload)
+    # Convert it to JSON
+    data = json.loads(res.text)
+    # Initiate the list of photos to return
+    photos = []
+    # If there are no errors, then proceed
+    if res.status_code == 200 and 'photoset' in data.keys():
+        # Get the owner name to create the photo link page
+        owner_name = data['photoset']['ownername']
+        # Get the total number of photos in this set
+        n_photos = int(data['photoset']['total'])
+        # Use a while loop for looping through all the available photos
+        # in the set. By default Flickr returns 500 pictures per page
+        while 'photoset' in data.keys():
+            for photo in data['photoset']['photo']:
+                direct_link = "http://farm%s.staticflickr.com/%s/%s_%s" % (
+                    photo['farm'], photo['server'],
+                    photo['id'], photo['secret'])
+                link = 'http://www.flickr.com/photos/%s/%s' % (
+                    owner_name, photo['id'])
+                tmp = dict(url_m=direct_link + "_m.jpg",
+                           url_b=direct_link + "_b.jpg",
+                           link=link)
+                photos.append(tmp)
+            payload['page'] += 1
+            res = requests.get(url, params=payload)
+            data = json.loads(res.text)
+        if len(photos) == n_photos:
+            return photos
+        else:
+            print "Something went wrong! Different number of photos %s != %s" % (len(photos), n_photos)
+            return []
+    else:
+        print "Something went wrong"
+        print "ERROR: [%s]: %s" % (res.status_code, res.text)
+
