@@ -19,11 +19,11 @@
 import json
 from optparse import OptionParser
 import pbclient
-from get_images import get_flickr_photos
+from get_images import get_flickr_set_photos # Change get_images.py accordingly
 import random
 import logging
 from requests import exceptions
-
+from time import sleep
 
 def contents(filename):
     return file(filename).read()
@@ -46,6 +46,12 @@ def handle_arguments():
                       dest="create_app",
                       help="Create the application",
                       metavar="CREATE-APP")
+                      
+    # Flickr Photoset ID
+    parser.add_option("-i", "--id", dest="photoset_id",
+                      help="Flickr Photoset ID to import",
+                      metavar="PHOTOSET-ID")
+
     # Update template for tasks and long_description for app
     parser.add_option("-t", "--update-template", action="store_true",
                       dest="update_template",
@@ -71,7 +77,7 @@ def handle_arguments():
                       dest="n_answers",
                       help="Number of answers per task",
                       metavar="N-ANSWERS",
-                      default=30)
+                      default=5)
 
     parser.add_option("-a", "--application-config",
                       dest="app_config",
@@ -137,6 +143,7 @@ def run(app_config, options):
         app.info['task_presenter'] = contents('template.html')
         app.info['thumbnail'] = app_config['thumbnail']
         app.info['tutorial'] = contents('tutorial.html')
+        # app.category_id = 5 - add/amend when there's a new category
 
         try:
             response = pbclient.update_app(app)
@@ -147,8 +154,9 @@ def run(app_config, options):
 
     def create_photo_task(app, photo, question, priority=0):
         # Data for the tasks
-        task_info = dict(question=question)
-        task_info.update(photo)
+        # task_info = dict(question=question)
+        # task_info.update(photo)
+        task_info = photo
         try:
             response = pbclient.create_task(app.id, task_info, priority_0=priority)
             check_api_error(response)
@@ -159,9 +167,14 @@ def run(app_config, options):
         # First of all we get the URL photos
         # Then, we have to create a set of tasks for the application
         # For this, we get first the photo URLs from Flickr
-        photos = get_flickr_photos()
+        
+        photos = get_flickr_set_photos(options.photoset_id) # photos = get_flickr_photos()
         question = app_config['question']
-        [create_photo_task(app, p, question, priority=random.random()) for p in photos]
+        #[create_photo_task(app, p, question, priority=random.random()) for p in photos]
+        for p in photos:
+            create_photo_task(app, p, question)
+            print "Creating task..."
+            sleep(4)
 
     pbclient.set('api_key', options.api_key)
     pbclient.set('endpoint', options.api_url)
