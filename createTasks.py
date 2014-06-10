@@ -45,19 +45,16 @@ def handle_arguments():
     parser.add_option("-c", "--create-app", action="store_true",
                       dest="create_app",
                       help="Create the application",
-                      metavar="CREATE-APP")
-                      
+                      metavar="CREATE-APP")                   
     # Flickr Photoset ID
     parser.add_option("-i", "--id", dest="photoset_id",
                       help="Flickr Photoset ID to import",
                       metavar="PHOTOSET-ID")
-
     # Update template for tasks and long_description for app
     parser.add_option("-t", "--update-template", action="store_true",
                       dest="update_template",
                       help="Update Tasks template",
                       metavar="UPDATE-TEMPLATE")
-
     # Update tasks question
     parser.add_option("-q", "--update-tasks",
                       type="int",
@@ -143,7 +140,7 @@ def run(app_config, options):
         app.info['task_presenter'] = contents('template.html')
         app.info['thumbnail'] = app_config['thumbnail']
         app.info['tutorial'] = contents('tutorial.html')
-        # app.category_id = 5 - add/amend when there's a new category
+        app.category_id = 5 # Amend when there's a new category
 
         try:
             response = pbclient.update_app(app)
