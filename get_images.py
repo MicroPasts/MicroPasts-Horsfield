@@ -61,24 +61,16 @@ def get_flickr_photos(size="big"):
     for idx, photo in enumerate(output['items']):
         print 'Retrieved photo: %s' % idx
         imgUrl_m = photo["media"]["m"]
-        imgUrl_raw = string.replace(photo["media"]["m"], "_m.jpg", "")
+        imgUrl_b =   string.replace(photo["media"]["m"], "_m.jpg", "_b.jpg")
+
         photos.append({'link': photo["link"], 'url_m':  imgUrl_m,
-                       'url_raw': imgUrl_raw,
-                      'title': photo["title"],
-                      'date_taken': photo["date_taken"],
-                      'tags': photo['tags'],
-                      'description': photo['description']})
+                      'url_b': imgUrl_b})
+                      #'title': photo["title"],
+                      #'date_taken': photo["date_taken"],
+                      #'tags': photo['tags'],
+                      #'description': photo['description']})
 
-    # Alternative code, refers tp get_flickr_set_photos function:
-    # m = medium size photo, b = big photo. Look into Flickr documentation: https://www.flickr.com/services/api/
-    #    imgUrl_m = photo["media"]["m"]
-    #    imgUrl_b = string.replace(photo["media"]["m"], "_m.jpg", "_b.jpg")
-    #    photos.append({'link': photo["link"], 'url_m':  imgUrl_m,
-    #                   'url_b': imgUrl_b})
-    
     return photos
-
-# Code taken from a transcription app:
 
 def get_flickr_set_photos(set_id):
     """Get public photos from a Flickr set_id and return a list."""

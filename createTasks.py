@@ -140,7 +140,7 @@ def run(app_config, options):
         app.info['task_presenter'] = contents('template.html')
         app.info['thumbnail'] = app_config['thumbnail']
         app.info['tutorial'] = contents('tutorial.html')
-        app.category_id = 5 # Amend when there's a new category
+        app.category_id = 8
 
         try:
             response = pbclient.update_app(app)
