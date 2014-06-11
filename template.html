@@ -19,13 +19,6 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- Is this necessary? Goes with the Modernizr code for IE8
-<div style="display:none;margin-top:15px; height:500px;" id="oldbrowser" class="row">
-    <div  class="col-md-8 col-md-offset-1 alert alert-info">
-        <strong>Sorry, but your browser does not support the current application. If you want to contribute, please, upgrade to a modern web browser like the open source and free alternative <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a href="https://www.google.com/intl/en/chrome/browser/">Chrome</a></strong>.
-    </div>
-</div --> 
-
 <!-- Success and Error Messages for the user --> 
 <div style="margin-top:15px;">
    <div id="success" class="alert alert-success" style="display:none;">
@@ -55,8 +48,8 @@
     It uses the class="skeleton" to identify the elements that belong to the
     task.
 -->
-
-<div class="row skeleton"><!-- Start Skeleton Row -->    
+<!-- Start Skeleton Row -->    
+<div class="row skeleton">
 
    <div class="btn-group pull-right">
       <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> Tutorial</button>
@@ -141,109 +134,4 @@
 <script type="text/javascript" src="http://annotorious.github.io/demos/semantic-tagging-plugin.js"></script>
 <script>
       //anno.addPlugin('SemanticTagging', { endpoint_url: 'http://samos.mminf.univie.ac.at:8080/wikipediaminer' });
-</script>
-
-<script>
-
-function loadUserProgress() {
-    pybossa.userProgress('phototaggingHorsfield').done(function(data){
-            console.log("Total answers done for user: " + data.done);
-        if ((data.done == 1) && ($.cookie('survey') === undefined)){
-           $("#survey").modal('show');
-           $.cookie('survey', 'shown', { path: '/'});
-        }
-        var pct = Math.round((data.done*100)/data.total);
-        $("#progress").css("width", pct.toString() +"%");
-        $("#progress").attr("title", pct.toString() + "% completed!");
-        $("#progress").tooltip({'placement': 'left'});
-        $("#total").text(data.total);
-        $("#done").text(data.done);
-    });
-}
-
-    // Customise this function as needed: 
-    pybossa.taskLoaded(function(task, deferred) {
-    if ( ! $.isEmptyObject(task) ) {
-        // load image from flickr
-        var img = $('<img />');
-        img.load(function() {
-            // continue as soon as the image is loaded
-            deferred.resolve(task);
-        });
-        // Flickr uses different suffixes for different picture sizes:
-        // _s.jpg    small square 75x75
-        // _q.jpg    large square 150x150
-        // _t.jpg    thumbnail, 100 on longest side
-        // _m.jpg    small, 240 on longest side
-        // _n.jpg    small, 320 on longest side
-        // .jpg      medium, 500 on longest side
-        // _z.jpg    medium 640, 640 on longest side
-        // _c.jpg    medium 800, 800 on longest side†
-        // _b.jpg    large, 1024 on longest side*
-        // _o.jpg    original image, either a jpg, gif or png, depending on source format
-        img.attr('src', task.info.url_raw + "_b.jpg"); // was "_z.jpg"
-        img.attr('id', 'anno_' + task.id);
-        img.addClass('img-polaroid');
-        img.addClass('annotable');
-        task.info.image = img;
-    }
-    else {
-        deferred.resolve(task);
-    }
-});
-
-// Customise this function as needed: 
-pybossa.presentTask(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        $('#photo-link').html('').append(task.info.image);
-        //$("#question").html(task.info.question);
-        $('#task-id').html(task.id);
-        
-        $("a#raw").attr("href", task.info.url_b);
-	$("a#flickr").attr("href", task.info.link + '/sizes/k/');
-	$("a#down").attr("download", task.id);
-	$("a#down").attr("href", task.info.url_b );
-        $(".fancybox").fancybox();
-        
-        $("#btn-submit").html("<i class='icon-repeat'></i> I don't recognize any person, try next one");
-        $("#btn-submit").removeClass("btn-success");
-        // Load data details
-        $("#title").text(task.info.title);
-        $("#description").html(task.info.description);
-        $("#date_taken").html(task.info.date_taken);
-        $("#tags").html(task.info.tags);
-
-        anno.makeAnnotatable(document.getElementById('anno_' + task.id));
-
-        anno.addHandler('onAnnotationCreated', function(annotation) {
-            //console.log(annotation.text);
-            $("#btn-submit").html("<i class='icon icon-save'></i> Save current annotations");
-            $("#btn-submit").addClass("btn-success");
-        });
-
-        $('.btn-answer').off('click').on('click', function(evt) {
-            var answer = $(evt.target).attr("value");
-            if (typeof answer != 'undefined') {
-                //console.log(answer);
-                pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
-                    deferred.resolve();
-                });
-                $("#loading").fadeIn(500);
-            }
-            else {
-                $("#error").show();
-            }
-        });
-        $("#loading").hide();
-    }
-    else {
-        $(".skeleton").hide();
-        $("#loading").hide();
-        $("#finish").fadeIn(500);
-    }
-});
-
-// Potentially additional stuff here
-
-pybossa.run('phototaggingHorsfield');
 </script>
