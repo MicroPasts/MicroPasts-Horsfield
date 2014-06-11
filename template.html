@@ -52,30 +52,29 @@
     </div>
 </div --> 
 
-    <!-- Success and Error Messages for the user --> 
-    <div style="margin-top:15px;">
-        <div id="success" class="alert alert-success" style="display:none;">
-            <strong>Well done!</strong> You have successfully submitted your tags. Here is another photograph to try if you wish!
-        </div>        
-        <div id="loading" class="alert alert-info" style="display:none;">
-            <img src="/static/img/loading.gif">Loading next task...
-        </div>
-        <div id="taskcompleted" class="alert alert-info" style="display:none;">
-            <strong>The task has been completed!</strong> Thanks a lot!
-        </div>
-        <div id="finish" class="alert alert-success" style="display:none;">
-            <strong>Congratulations!</strong> You have participated in all available tasks!
-            <br/>
-            <div class="alert-actions">
-                <a class="btn-default btn" href="/">Go back</a>
-                <a class="btn-default btn" href="/app">or, Check other applications</a>
-            </div>
-        </div>
-        <div id="error" class="alert alert-error" style="display:none;">
-            <a class="close">×</a>
-            <strong>Error!</strong> Something went wrong, please contact the site administrators
-        </div>
-    </div><!-- End Success and Error Messages for the user -->
+<!-- Success and Error Messages for the user --> 
+<div style="margin-top:15px;">
+   <div id="success" class="alert alert-success" style="display:none;">
+      <strong>Well done!</strong> You have successfully submitted your tags. Here is another photograph to try if you wish!
+   </div>        
+   <div id="loading" class="alert alert-info" style="display:none;">
+      <img src="/static/img/loading.gif">Loading next task...
+   </div>
+   <div id="taskcompleted" class="alert alert-info" style="display:none;">
+      <strong>The task has been completed!</strong> Thanks a lot!
+   </div>
+   <div id="finish" class="alert alert-success" style="display:none;">
+      <strong>Congratulations!</strong> You have participated in all available tasks!
+      <div class="alert-actions">
+         <a class="btn-default btn" href="/">Go back</a>
+         <a class="btn-default btn" href="/app">or, Check other applications</a>
+      </div>
+   </div>
+   <div id="error" class="alert alert-error" style="display:none;">
+      <a class="close">×</a>
+      <strong>Error!</strong> Something went wrong, please contact the site administrators
+   </div>
+</div><!-- End Success and Error Messages for the user -->
 
 <!--
     Task DOM for loading the Flickr Images
@@ -83,12 +82,12 @@
     task.
 -->
 
-<div class="row skeleton"> <!-- Start Skeleton Row -->    
+<div class="row skeleton"><!-- Start Skeleton Row -->    
+
    <div class="btn-group pull-right">
       <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> Tutorial</button>
       <a class="btn btn-info btn-sm" id="imgLink" target="_blank" data-toggle="tooltip" data-placement="top" title="Opens in a new window" href="http://community.micropasts.org/category/crowdsourcing-support"><i class="glyphicon glyphicon-book"></i> Community Help</a>
-      <a class="btn btn-info btn-sm" id="newTask" href="../newtask"><i class="glyphicon glyphicon-picture"></i> Different photograph?</a>
-      <!-- button id="btn-submit" class="btn btn-large btn-answer pull-right" value='NoTag'><i class="icon-repeat"></i> I don't recognise any features or people, try next one</button -->    
+      <a class="btn btn-info btn-sm" id="newTask" href="../newtask"><i class="glyphicon glyphicon-picture"></i> Different photograph?</a>  
       <a id="flickr" rel="tooltip" target="_blank" data-toggle="tooltip" data-placement="top" title="Opens in a new window" href="" class="btn btn-sm btn-info"><i class="icon icon-flickr"></i> View on flickr</a>
       <a id="down" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Only works for compliant browsers" download="" href="" class="btn btn-sm btn-info" ><i class="glyphicon glyphicon-download"></i> Download</a>
    </div>
@@ -96,32 +95,28 @@
    <h1 id="step1">Please tag this photograph</h1><!-- id="start" instead? -->
    <div class="btn-group">
       <button id="status" type="button" class="btn btn-default btn-type disabled" name="loading" value="loading">Loading photo</button>
+      <!-- span id="photo-link">
+                <img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
+      </span -->
     </div>
     <div class="btn-group">
-       <button id="btn-save" class="btn btn-success btn-answer" value='save'><i class="icon icon-white icon-save"></i> Submit your photo tags</button>
+       <button id="btn-save" class="btn btn-success btn-answer" value='save'><i class="icon icon-white icon-save"></i> Submit your tags</button>
     </div>
 
 </div><!-- End of Skeleton Row -->
 
-<!-- div class="row skeleton">
-    <div id="img-details" class="col-md-4">
-        <h4 id="title"></h4>
-        <p id="description"></p>
-        <p><i class="icon icon-time"></i> Date taken: <span id="date_taken"></span></p>
-        <p><i class="icon icon-tag"></i> Tags: <span id="tags"></span></p>
-    </div>
-    <div class="span8">
-        <span id="photo-link">
-                <img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
-        </span>
-    </div>
-</div -->
+<div class="row skeleton"><!-- Start Skeleton Row-->
 
-<div class="row skeleton"> <!-- Start Skeleton Row-->
    <div class="col-md-8"><!-- Start of Photo DIV (column) -->
-      <div id="map" class="img-polaroid"></div>
-   </div><!-- End of Photo DIV (columnt) -->
-   <div class="span4"><!-- Start of Question and Submission DIV (column) -->
+      <!-- div id="map" class="img-polaroid"></div -->
+      <div id="imgContainer" >
+         <!-- <img src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">-->
+      </div>
+      <div id="taskImg"></div>
+
+   </div><!-- End of Photo DIV (column) -->
+
+   <div class="col-md-4"><!-- Start of Question and Submission DIV (column) -->
       <!-- Feedback items for the user -->
       <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
       <p>You have completed: <span id="done" class="label label-info"></span> tasks from
@@ -132,6 +127,7 @@
       </div>
       <div id="answer"></div><!-- DIV for the submission buttons -->
     </div><!-- End of Question and Submission DIV (column) -->
+
 </div><!-- End of Skeleton Row -->
 
 <!-- Modal start -->
