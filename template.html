@@ -172,7 +172,7 @@ pybossa.taskLoaded(function(task, deferred) {
         // _c.jpg    medium 800, 800 on longest side
         // _b.jpg    large, 1024 on longest side*
         // _o.jpg    original image, either a jpg, gif or png, depending on source format
-        img.attr('src', task.info.link); 
+        img.attr('src', task.info.url_b); 
         img.attr('id', 'anno_' + task.id);
         img.addClass('img-polaroid');
         img.addClass('annotable');
