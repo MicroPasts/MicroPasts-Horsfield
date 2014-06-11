@@ -189,7 +189,11 @@ pybossa.presentTask(function(task, deferred) {
         $('#photo-link').html('').append(task.info.image);
         //$("#question").html(task.info.question);
         $('#task-id').html(task.id);
-
+        $("a#raw").attr("href", task.info.url_b);
+	$("a#flickr").attr("href", task.info.link + '/sizes/k/');
+	$("a#down").attr("download", task.id);
+	$("a#down").attr("href", task.info.url_b );
+        
         $("#btn-submit").html("<i class='icon-repeat'></i> I don't recognize any person, try next one");
         $("#btn-submit").removeClass("btn-success");
         // Load data details
