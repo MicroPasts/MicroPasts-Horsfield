@@ -136,6 +136,23 @@
       //anno.addPlugin('SemanticTagging', { endpoint_url: 'http://samos.mminf.univie.ac.at:8080/wikipediaminer' });
 </script>
 <script>
+function loadUserProgress() {
+    pybossa.userProgress('phototaggingHorsfield').done(function(data){
+            console.log("Total answers done for user: " + data.done);
+        if ((data.done == 1) && ($.cookie('survey') === undefined)){
+           $("#survey").modal('show');
+           $.cookie('survey', 'shown', { path: '/'});
+        }
+        var pct = Math.round((data.done*100)/data.total);
+        $("#progress").css("width", pct.toString() +"%");
+        $("#progress").attr("title", pct.toString() + "% completed!");
+        $("#progress").tooltip({'placement': 'left'});
+        $("#total").text(data.total);
+        $("#done").text(data.done);
+    });
+}
+
+// Customise this function as needed: 
 pybossa.taskLoaded(function(task, deferred) {
     if ( ! $.isEmptyObject(task) ) {
         // load image from flickr
@@ -152,10 +169,10 @@ pybossa.taskLoaded(function(task, deferred) {
         // _n.jpg    small, 320 on longest side
         // .jpg      medium, 500 on longest side
         // _z.jpg    medium 640, 640 on longest side
-        // _c.jpg    medium 800, 800 on longest side
+        // _c.jpg    medium 800, 800 on longest side†
         // _b.jpg    large, 1024 on longest side*
         // _o.jpg    original image, either a jpg, gif or png, depending on source format
-        img.attr('src', task.info.url_raw + "_z.jpg");
+        img.attr('src', task.info.link); // was "_z.jpg"
         img.attr('id', 'anno_' + task.id);
         img.addClass('img-polaroid');
         img.addClass('annotable');
@@ -166,13 +183,14 @@ pybossa.taskLoaded(function(task, deferred) {
     }
 });
 
+// Customise this function as needed: 
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         $('#photo-link').html('').append(task.info.image);
         //$("#question").html(task.info.question);
         $('#task-id').html(task.id);
 
-        $("#btn-submit").html("<i class='icon-repeat'></i> I don't recognize any person, try next one");
+        $("#btn-submit").html("<i class='icon-repeat'></i> I do not recognise anything, try next one");
         $("#btn-submit").removeClass("btn-success");
         // Load data details
         $("#title").text(task.info.title);
@@ -196,10 +214,6 @@ pybossa.presentTask(function(task, deferred) {
                     deferred.resolve();
                 });
                 $("#loading").fadeIn(500);
-                if ($("#disqus_thread").is(":visible")) {
-                    $('#disqus_thread').toggle();
-                    $('.btn-disqus').toggle();
-                }
             }
             else {
                 $("#error").show();
@@ -213,6 +227,8 @@ pybossa.presentTask(function(task, deferred) {
         $("#finish").fadeIn(500);
     }
 });
+
+// Potentially additional stuff here
 
 pybossa.run('phototaggingHorsfield');
 </script>
