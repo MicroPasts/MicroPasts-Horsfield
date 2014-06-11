@@ -116,7 +116,8 @@
 
    </div><!-- End of Photo DIV (column) -->
 
-   <div class="col-md-4"><!-- Start of Question and Submission DIV (column) -->
+   <div class="col-md-4">
+      <!-- Start of Question and Submission DIV (column) -->
       <!-- Feedback items for the user -->
       <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
       <p>You have completed: <span id="done" class="label label-info"></span> tasks from
@@ -174,10 +175,10 @@
 function loadUserProgress() {
     pybossa.userProgress('phototaggingHorsfield').done(function(data){
             console.log("Total answers done for user: " + data.done);
-    //if ((data.done == 1) && ($.cookie('survey') === undefined)){
-    //       $("#survey").modal('show');
-    //       $.cookie('survey', 'shown', { path: '/'});
-    //    }
+        if ((data.done == 1) && ($.cookie('survey') === undefined)){
+           $("#survey").modal('show');
+           $.cookie('survey', 'shown', { path: '/'});
+        }
         var pct = Math.round((data.done*100)/data.total);
         $("#progress").css("width", pct.toString() +"%");
         $("#progress").attr("title", pct.toString() + "% completed!");
@@ -187,8 +188,8 @@ function loadUserProgress() {
     });
 }
 
-// Customise this function as needed: 
-pybossa.taskLoaded(function(task, deferred) {
+    // Customise this function as needed: 
+    pybossa.taskLoaded(function(task, deferred) {
     if ( ! $.isEmptyObject(task) ) {
         // load image from flickr
         var img = $('<img />');
