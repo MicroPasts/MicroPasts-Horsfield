@@ -39,7 +39,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
-        <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/1Foe1CCfd4K_ZmtX2W8MDsoSjjDi5zd5DLgG7yRVn2HQ/viewform?embedded=true">Of course! Take me to the survey!</a>
+        <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/1lNhBvKqPQlaJpWcvbEMfOGlixf7BHC__9w9JYs0Yw_4/viewform?embedded=true">Of course! Take me to the survey!</a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -104,7 +104,7 @@
 
 <div class="row skeleton"><!-- Start Skeleton Row-->
 
-   <div class="col-md-8"><!-- Start of Photo DIV (column) -->
+   <div class="col-md-12"><!-- Start of Photo DIV (column) -->
       <!-- div id="map" class="img-polaroid"></div -->
       <div id="imgContainer" >
          <span id="photo-link">
@@ -208,7 +208,7 @@ pybossa.taskLoaded(function(task, deferred) {
         // _c.jpg    medium 800, 800 on longest side†
         // _b.jpg    large, 1024 on longest side*
         // _o.jpg    original image, either a jpg, gif or png, depending on source format
-        img.attr('src', task.info.url_raw + "_z.jpg");
+        img.attr('src', task.info.url_raw + "_b.jpg"); // was "_z.jpg"
         img.attr('id', 'anno_' + task.id);
         img.addClass('img-polaroid');
         img.addClass('annotable');

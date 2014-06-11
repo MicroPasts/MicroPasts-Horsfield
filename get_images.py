@@ -40,7 +40,6 @@ def get_flickr_photos(size="big"):
     print('Contacting Flickr for photos')
     url = "http://api.flickr.com/services/feeds/photos_public.gne"
     values = {'nojsoncallback': 1,
-              #'ids': '30115723@N02',
               'format': "json"}
 
     query = url + "?" + urllib.urlencode(values)
@@ -60,16 +59,14 @@ def get_flickr_photos(size="big"):
     photos = []
     for idx, photo in enumerate(output['items']):
         print 'Retrieved photo: %s' % idx
-        imgUrl_m = photo["media"]["m"]
-        imgUrl_b =   string.replace(photo["media"]["m"], "_m.jpg", "_b.jpg")
-
-        photos.append({'link': photo["link"], 'url_m':  imgUrl_m,
-                      'url_b': imgUrl_b})
+        imgUrl_b = photo["media"]["b"]
+        imgUrl_raw = string.replace(photo["media"]["b"], "_b.jpg", "")
+        photos.append({'link': photo["link"], 'url_b':  imgUrl_b,
+                      'url_raw': imgUrl_raw})
                       #'title': photo["title"],
                       #'date_taken': photo["date_taken"],
                       #'tags': photo['tags'],
                       #'description': photo['description']})
-
     return photos
 
 def get_flickr_set_photos(set_id):
@@ -105,8 +102,7 @@ def get_flickr_set_photos(set_id):
                     photo['id'], photo['secret'])
                 link = 'http://www.flickr.com/photos/%s/%s' % (
                     owner_name, photo['id'])
-                tmp = dict(url_m=direct_link + "_m.jpg",
-                           url_b=direct_link + "_b.jpg",
+                tmp = dict(url_b=direct_link + "_b.jpg",# + url_m=direct_link + "_m.jpg",
                            link=link)
                 photos.append(tmp)
             payload['page'] += 1
