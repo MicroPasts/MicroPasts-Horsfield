@@ -193,14 +193,17 @@ pybossa.presentTask(function(task, deferred) {
 	$("a#flickr").attr("href", task.info.link + '/sizes/k/');
 	$("a#down").attr("download", task.id);
 	$("a#down").attr("href", task.info.url_b );
+        $(".fancybox").fancybox();
+        $('#imgLink').tooltip();
+        $("[rel=tooltip]").tooltip();
         
-        $("#btn-submit").html("<i class='icon-repeat'></i> I don't recognize any person, try next one");
+        $("#btn-submit").html("<i class='icon-repeat'></i> I don't recognize anything, try next one");
         $("#btn-submit").removeClass("btn-success");
         // Load data details
-        $("#title").text(task.info.title);
-        $("#description").html(task.info.description);
-        $("#date_taken").html(task.info.date_taken);
-        $("#tags").html(task.info.tags);
+//        $("#title").text(task.info.title);
+//        $("#description").html(task.info.description);
+//        $("#date_taken").html(task.info.date_taken);
+//        $("#tags").html(task.info.tags);
 
         anno.makeAnnotatable(document.getElementById('anno_' + task.id));
 
