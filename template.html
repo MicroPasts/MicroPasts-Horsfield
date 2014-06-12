@@ -135,10 +135,38 @@
 <script>
       //anno.addPlugin('SemanticTagging', { endpoint_url: 'http://samos.mminf.univie.ac.at:8080/wikipediaminer' });
 </script>
+
+<script>
+var step = -1;
+function showStep(action) {
+   $("#" + step).hide();
+   if (action == 'next') {
+      step = step + 1;
+   }
+   if (action == 'prev') {
+      step = step - 1;
+   }
+   if (step == 0) {
+      $("#prevBtn").hide();
+   }
+   else {
+      $("#prevBtn").show();
+   }
+   if (step == 3 ) {
+      $("#nextBtn").hide();
+      $("#startContrib").show();
+   }
+   $("#" + step).show();
+}
+
+showStep('next');
+$("#modal").modal('show');
+</script>
+
 <script>
 function loadUserProgress() {
     pybossa.userProgress('phototaggingHorsfield').done(function(data){
-            console.log("Total answers done for user: " + data.done);
+        console.log("Total answers done for user: " + data.done);
         if ((data.done == 1) && ($.cookie('survey') === undefined)){
                $("#survey").modal('show');
                $.cookie('survey', 'shown', { path: '/'});
@@ -190,9 +218,9 @@ pybossa.presentTask(function(task, deferred) {
         //$("#question").html(task.info.question);
         $('#task-id').html(task.id);
         $("a#raw").attr("href", task.info.url_b);
-	$("a#flickr").attr("href", task.info.link + '/sizes/k/');
-	$("a#down").attr("download", task.id);
-	$("a#down").attr("href", task.info.url_b );
+	      $("a#flickr").attr("href", task.info.link + '/sizes/k/');
+	      $("a#down").attr("download", task.id);
+	      $("a#down").attr("href", task.info.url_b );
         $(".fancybox").fancybox();
         $('#imgLink').tooltip();
         $("[rel=tooltip]").tooltip();
