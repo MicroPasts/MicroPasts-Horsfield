@@ -55,7 +55,7 @@
       <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> Tutorial</button>
       <a class="btn btn-info btn-sm" id="imgLink" target="_blank" data-toggle="tooltip" data-placement="top" title="Opens in a new window" href="http://community.micropasts.org/category/crowdsourcing-support"><i class="glyphicon glyphicon-book"></i> Community Help</a>
       <a id="raw" href="" class="btn btn-sm btn-info fancybox" ><i class="glyphicon glyphicon-picture"></i> Overlay</a>
-      <a id="flickr" rel="tooltip" target="_blank" data-toggle="tooltip" data-placement="top" title="Opens in a new window" href="" class="btn btn-sm btn-info"><i class="icon icon-flickr"></i> View on flickr</a>
+      <a id="flickr" rel="tooltip" target="_blank" data-toggle="tooltip" data-placement="top" title="Opens in a new window" href="" class="btn btn-sm btn-info"><i class="icon icon-flickr"></i> View on Flickr</a>
       <a id="down" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Only works for compliant browsers" download="" href="" class="btn btn-sm btn-info" ><i class="glyphicon glyphicon-download"></i> Download</a>
    </div>
 
@@ -188,6 +188,7 @@ pybossa.taskLoaded(function(task, deferred) {
         img.load(function() {
             // continue as soon as the image is loaded
             deferred.resolve(task);
+            $("#status").text("Photo loaded!");
         });
         // Flickr uses different suffixes for different picture sizes:
         // _s.jpg    small square 75x75
