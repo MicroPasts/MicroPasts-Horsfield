@@ -212,7 +212,6 @@ pybossa.taskLoaded(function(task, deferred) {
     }
 });
 
-// Customise this function as needed: 
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         $('#photo-link').html('').append(task.info.image);
@@ -244,16 +243,16 @@ pybossa.presentTask(function(task, deferred) {
 
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
-            if (typeof answer != 'undefined') {
+            //if (typeof answer != 'undefined') {
                 //console.log(answer);
                 pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
                     deferred.resolve();
                 });
                 $("#loading").fadeIn(500);
-            }
-            else {
-                $("#error").show();
-            }
+            //}
+            //else {
+            //    $("#error").show();
+            //}
         });
         $("#loading").hide();
     }
