@@ -166,10 +166,10 @@ $("#modal").modal('show');
 <script>
 function loadUserProgress() {
     pybossa.userProgress('phototaggingHorsfield').done(function(data){
-        console.log("Total answers done for user: " + data.done);
+        //console.log("Total answers done for user: " + data.done);
         if ((data.done == 1) && ($.cookie('survey') === undefined)){
-               $("#survey").modal('show');
-               $.cookie('survey', 'shown', { path: '/'});
+           $("#survey").modal('show');
+           $.cookie('survey', 'shown', { path: '/'});
         }
         var pct = Math.round((data.done*100)/data.total);
         $("#progress").css("width", pct.toString() +"%");
@@ -243,16 +243,16 @@ pybossa.presentTask(function(task, deferred) {
 
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
-            //if (typeof answer != 'undefined') {
+            if (typeof answer != 'undefined') {
                 //console.log(answer);
                 pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
                     deferred.resolve();
                 });
                 $("#loading").fadeIn(500);
-            //}
-            //else {
-            //    $("#error").show();
-            //}
+            }
+            else {
+                $("#error").show();
+            }
         });
         $("#loading").hide();
     }
@@ -261,9 +261,7 @@ pybossa.presentTask(function(task, deferred) {
         $("#loading").hide();
         $("#finish").fadeIn(500);
     }
+    $('#imgLink').tooltip();
 });
-
-// Potentially additional stuff here
-
 pybossa.run('phototaggingHorsfield');
 </script>
