@@ -183,6 +183,7 @@ function loadUserProgress() {
 // Customise this function as needed: 
 pybossa.taskLoaded(function(task, deferred) {
     if ( ! $.isEmptyObject(task) ) {
+    	loadUserProgress();
         // load image from flickr
         var img = $('<img />');
         img.load(function() {
