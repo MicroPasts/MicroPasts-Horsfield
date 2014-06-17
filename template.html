@@ -90,7 +90,7 @@
       <!-- Progress bar for the user -->
       <span id="total" class="label label-inverse"></span></p>
       <div class="progress progress-striped">
-         <div id="progress" rel="tooltip" title="#" class="bar" style="width:0%;"></div>
+         <div id="progress" class="progress-bar" role="progressbar" rel="tooltip" title="#" class="bar" style="width:0%;"></div>
       </div>
       <div id="answer"></div><!-- DIV for the submission buttons -->
     </div><!-- End of Question and Submission DIV (column) -->
@@ -167,6 +167,7 @@ $("#modal").modal('show');
 function loadUserProgress() {
     pybossa.userProgress('phototaggingHorsfield').done(function(data){
         console.log("Total answers done for user: " + data.done);
+        console.log(data);
         if ((data.done == 1) && ($.cookie('survey') === undefined)){
            $("#survey").modal('show');
            $.cookie('survey', 'shown', { path: '/'});
@@ -237,7 +238,7 @@ pybossa.presentTask(function(task, deferred) {
         anno.makeAnnotatable(document.getElementById('anno_' + task.id));
 
         anno.addHandler('onAnnotationCreated', function(annotation) {
-            //console.log(annotation.text);
+            console.log(annotation.text);
             $("#btn-submit").html("<i class='icon icon-save'></i> Save current annotations");
             $("#btn-submit").addClass("btn-success");
         });
@@ -245,7 +246,7 @@ pybossa.presentTask(function(task, deferred) {
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
             if (typeof answer != 'undefined') {
-                //console.log(answer);
+                console.log(answer);
                 pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
                     deferred.resolve();
                 });
