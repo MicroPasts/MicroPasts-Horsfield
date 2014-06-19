@@ -1,18 +1,31 @@
 <div id="modal" class="modal fade">
    <div class="modal-dialog">
       <div class="modal-content">
-
-         <div class="modal-header"><h3>Tagging Photos Tutorial</h3></div>
-
+         <div class="modal-header"><h3>Photo-tagging Tutorial</h3></div>
             <div id="0" class="modal-body" style="display:none">
                 <p>
-                The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you this question: <strong>Tag all the elements that you recognise</strong></p>.
-                <p>You then hover the mouse over tha elements that you identify, and draw a box clicking in the image, and you will be able to type the name of that element and save it.</p>
+                The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you to <strong>tag all the elements that you recognise</strong>. These can be anything from 'objects' such as a <i>column</i> or a <i>camel</i>, an activity taken place such as <i>agriculture</i> or <i>transport</i>, a certain cultural group of people such as <i>Bedouin</i> or <i>European</i>, and/or more general themes such as simply <i>architecture</i>.
+                </p>
+                <p>
+                You then hover the mouse over tha elements that you identify, and then by clicking and dragging you will draw a box. A text box will appear, in which you will be able to type the name of that element and save it.
+                </p>
+                <p>
                 <img src="https://farm3.staticflickr.com/2918/14443363844_d99632eb9b.jpg" width="500" height="332" alt="An example of the tagging interface"/>
-                <p>You can do it as many times as you want. Simple, right? Now let's try it!
+                </p>
+                <p>
+                You can do this as many times as you want. If you wish to edit a tag or delete it altogether, you can do this by hovering over the relevant box, and then selecting either the pencil tool for editing, or the 'x' for deleting.
+                </p> 
+                <p>
+                If the photo has a caption, please select that area and type in the caption's text.
+                </p> 
+                <p>
+                As you can see, you have four buttons representing four categories of suggested keywords: Activity, Object, Theme and Cultural Group. Click on each one of these will bring up a list of suggested keywords to be used in tagging. You can refer to these lists when tagging each photo, but you can also add your own tags. Under the photo you will find a text box in which you can add any comments you might have. 
                 </p> 
             </div>
             <div id="1" class="modal-body" style="display:none">
+                <p>
+                During the task, you can always return to this tutorial via the "Help" button.
+                </p> 
                 <p>
                 To find out how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
                 </p> 
@@ -27,29 +40,27 @@
 </div>
 
 <script>
-    var step = -1;
-    function showStep(action) {
-        $("#" + step).hide();
-        if (action == 'next') {
-            step = step + 1;
-        }
-        if (action == 'prev') {
-            step = step - 1;
-        }
-        if (step == 0) {
-            $("#prevBtn").hide();
-        }
-        else {
-            $("#prevBtn").show();
-        }
-
-        if (step == 1 ) {
-            $("#nextBtn").hide();
-            $("#startContrib").show();
-        }
-        $("#" + step).show();
-    }
-
-    showStep('next');
-    $("#modal").modal('show');
+var step = -1;
+function showStep(action) {
+   $("#" + step).hide();
+   if (action == 'next') {
+      step = step + 1;
+   }
+   if (action == 'prev') {
+      step = step - 1;
+   }
+   if (step == 0) {
+      $("#prevBtn").hide();
+   }
+   else {
+      $("#prevBtn").show();
+   }
+   if (step == 1) {
+      $("#nextBtn").hide();
+      $("#startContrib").show();
+   }
+   $("#" + step).show();
+}
+showStep('next');
+$("#modal").modal('show');
 </script>
