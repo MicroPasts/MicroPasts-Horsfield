@@ -111,11 +111,6 @@
          <li><a href="#">European</a></li>
       </ul>
    </div>
-
-   <div class="btn-group">
-       <button id="btn-save" class="btn btn-success btn-answer" value='save'><i class="icon icon-white icon-save"></i> Submit your tags</button>
-   </div>
-
 </div><!-- End of Skeleton Row -->
 
 <div class="row skeleton"><!-- Start Skeleton Row-->
@@ -132,13 +127,17 @@
 
    <div class="col-md-4">
       <!-- Start of Question and Submission DIV (column) -->
-
+      <p>&nbsp;</p>
       <form id="phototagging" role="form">
       <div class="form-group">
          <label class="control-label" for="comments">Your Comments</label>
          <textarea class="form-control" rows="5" name="other" placeholder="Add here your comments, if any."></textarea>
       </div>
       </form>
+
+      <div class="btn-group">
+         <button id="btn-save" class="btn btn-success btn-answer" value='save'><i class="icon icon-white icon-save"></i> Submit your tags</button>
+      </div>
 
       <!-- Feedback items for the user -->
       <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
