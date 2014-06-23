@@ -128,11 +128,18 @@
          </span>
       </div>
       <div id="taskImg"></div>
-
    </div><!-- End of Photo DIV (column) -->
 
    <div class="col-md-4">
       <!-- Start of Question and Submission DIV (column) -->
+
+      <form id="phototagging" role="form">
+      <div class="form-group">
+         <label class="control-label" for="comments">Your Comments</label>
+         <textarea class="form-control" rows="5" name="other" placeholder="Add here your comments, if any."></textarea>
+      </div>
+      </form>
+
       <!-- Feedback items for the user -->
       <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
       <p>You have completed: <span id="done" class="label label-info"></span> tasks from
