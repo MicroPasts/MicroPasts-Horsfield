@@ -198,12 +198,6 @@
 </div>
 <!-- Modal end --> 
 
-<script type="text/javascript" src="/static/js/vendor/annotorious.min.js"></script>
-<script type="text/javascript" src="http://annotorious.github.io/demos/semantic-tagging-plugin.js"></script>
-<script>
-      //anno.addPlugin('SemanticTagging', { endpoint_url: 'http://samos.mminf.univie.ac.at:8080/wikipediaminer' });
-</script>
-
 <script>
 var step = -1;
 function showStep(action) {
@@ -248,7 +242,6 @@ function loadUserProgress() {
     });
 }
 
-// Customise this function as needed: 
 pybossa.taskLoaded(function(task, deferred) {
     if ( ! $.isEmptyObject(task) ) {
     	loadUserProgress();
@@ -296,11 +289,6 @@ pybossa.presentTask(function(task, deferred) {
         
         $("#btn-submit").html("<i class='icon-repeat'></i> I don't recognise anything, try next one");
         $("#btn-submit").removeClass("btn-success");
-        // Load data details
-//        $("#title").text(task.info.title);
-//        $("#description").html(task.info.description);
-//        $("#date_taken").html(task.info.date_taken);
-//        $("#tags").html(task.info.tags);
 
         anno.makeAnnotatable(document.getElementById('anno_' + task.id));
 
