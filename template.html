@@ -131,7 +131,7 @@
       <form id="phototagging" role="form">
          <div class="form-group">
             <label class="control-label" for="comments">Your Comments</label>
-            <textarea class="form-control" rows="5" name="userComments" placeholder="Add here your comments, if any."></textarea>
+            <textarea class="form-control" rows="5" name="comments" placeholder="Add here your comments, if any."></textarea>
          </div>
       </form>
       <div class="btn-group">
@@ -304,10 +304,8 @@ pybossa.presentTask(function(task, deferred) {
                 task.answer = anno.getAnnotations();
                 console.log(task.answer);
 
-                task.answer.userComments = $('input[name=userComments]', '#phototagging').val();
+                task.answer.userComments = $('input[name="comments"]', '#phototagging').val();
                 console.log(task.answer.userComments);
-
-                console.log(task.answer);
 
                 pybossa.saveTask(task.id, task.answer).done(function() {
                     deferred.resolve();
