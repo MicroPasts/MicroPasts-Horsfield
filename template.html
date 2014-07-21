@@ -304,7 +304,7 @@ pybossa.presentTask(function(task, deferred) {
                 task.answer = anno.getAnnotations();
                 console.log(task.answer);
 
-                task.answer.userComments = $('input[name="comments"]', '#phototagging').val();
+                task.answer.userComments = $('input[name=comments]', '#phototagging').val();
                 console.log(task.answer.userComments);
 
                 pybossa.saveTask(task.id, task.answer).done(function() {
