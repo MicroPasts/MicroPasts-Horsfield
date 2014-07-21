@@ -301,10 +301,12 @@ pybossa.presentTask(function(task, deferred) {
             var answer = $(evt.target).attr("value");
             if (typeof answer != 'undefined') {
 
-                //task.answer = anno.getAnnotations();
-                //console.log(task.answer);
+                task.answer = anno.getAnnotations();
+                console.log(task.answer);
 
-                task.answer = $('input[name=userComments]', '#phototagging').val();
+                task.answer.userComments = $('input[name=userComments]', '#phototagging').val();
+                console.log(task.answer.userComments);
+
                 console.log(task.answer);
 
                 pybossa.saveTask(task.id, task.answer).done(function() {
