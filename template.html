@@ -59,6 +59,7 @@
 <!-- Start Skeleton Row -->    
 <div class="row skeleton">
 
+   <!-- Start of Question and Submission DIV -->
    <div class="btn-group pull-right">
       <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> Tutorial</button>
       <a class="btn btn-info btn-sm" id="imgLink" target="_blank" data-toggle="tooltip" data-placement="top" title="Opens in a new window" href="http://community.micropasts.org/category/crowdsourcing-support"><i class="glyphicon glyphicon-book"></i> Community Help</a>
@@ -124,14 +125,13 @@
       </div>
    </div><!-- End of Photo DIV (column) -->
 
-   <div class="col-md-4">
-      <!-- Start of Question and Submission DIV (column) -->
+   <div class="col-md-4"> 
       <p>&nbsp;</p>
 
       <form id="phototagging" role="form">
          <div class="form-group">
             <label class="control-label" for="comments">Your Comments</label>
-            <textarea class="form-control" rows="5" name="other" placeholder="Add here your comments, if any."></textarea>
+            <textarea class="form-control" rows="5" name="userComments" placeholder="Add here your comments, if any."></textarea>
          </div>
       </form>
       <div class="btn-group">
@@ -300,8 +300,14 @@ pybossa.presentTask(function(task, deferred) {
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
             if (typeof answer != 'undefined') {
-                console.log(answer);
-                pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
+
+                task.answer = anno.getAnnotations();
+                console.log(task.answer);
+
+                task.answer.userComments = $('input[name=userComments]', '#phototagging').val();
+                console.log(task.answer.userComments);
+
+                pybossa.saveTask(task.id, task.answer).done(function() {
                     deferred.resolve();
                 });
                 $("#loading").fadeIn(500);
