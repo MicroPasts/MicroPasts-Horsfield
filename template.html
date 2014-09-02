@@ -10,6 +10,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" type="text/javascript"></script>
 <!-- Annotorious -->
 <script src="http://annotorious.github.io/latest/annotorious.min.js" type="text/javascript"></script><script <src="http://annotorious.github.io/latest/anno-fancybox.min.js" type="text/javascript"></script>
+<script src="http://annotorious.github.io/latest/anno-fancybox.min.js" type="text/javascript"></script>
 
 <!-- jquery form serializer -->
 <script src="/static/js/vendor/jquery.serializeJSON.min.js" type="text/javascript"></script>
@@ -73,6 +74,7 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
     <!-- The complex 25 task -->
     <div id="survey25" class="modal fade" data-backdrop="static">
       <div class="modal-dialog">
@@ -167,8 +169,6 @@
         </div>
 
 
-
-
     </div><!-- End of Skeleton Row -->
 
     <div class="row skeleton"><!-- Start Skeleton Row-->
@@ -253,13 +253,26 @@
                 <label class="control-label" for="site">Geo-reference the site</label>
                 <input type="text" class="form-control" id="toSearch" name="toSearch"
                        placeholder="Locate the site on a map"></input>
-                <input type="hidden" name="lat" value="" id="lat">
-                <input type="hidden" name="lon" value="" id="lon">
+                <input type="hidden"  name="lat" value="" id="lat">
+                <input type="hidden"  name="lon" value="" id="lon">
             </div>
 
             <div id="map">
             </div>
-
+            <div>
+                <label class="control-label" for="site">Look up a Pleiades Identifier: </label>
+                <select class="form-control" id="pleiadesID" name="pleiadesID"
+                       placeholder="Type the place name and choose a value">
+                         <option value="">Please choose a place</option>
+                    <option value="697728" >Amman, Jordan - Amman/Philadelpheia</option>
+                    <option value="678158">Jerash - Gerasa/Antiochia ad Chrysorhoam</option>
+                    <option value="697725">Petra, Jordan</option>
+                    </select>
+              <h4>Why use Pleiades tags</h4>
+                <p>
+                    <a rel="tooptip" data-placement="top" data-toggle="tooltip" title="" data-original-title="The Pleiades site - opens in a new window" href="http://pleiades.stoa.org/" target="_blank">Pleiades</a> is a community-built gazetteer and graph of ancient places.. By adding these identifiers, we can assist their efforts. 
+                </p>
+            </div>
         </div>
         <!-- End of geo group -->
     </div>
@@ -316,7 +329,7 @@
                 During the task, you can always return to this tutorial via the "Help" button.
                 </p>
                 <p>
-                To find out how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
+                <i class="glyphicon glyphicon-eye-open"></i> To find out how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
                 </p>
              </div>
           <!-- End of stepped modal body -->
@@ -375,9 +388,9 @@
 
     function initialize(){
     //MAP
-      var latlng = new google.maps.LatLng(32.2, 35.98);
+      var latlng = new google.maps.LatLng(31.95, 35.94);
       var options = {
-        zoom: 6,
+        zoom: 9,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
@@ -449,7 +462,7 @@
         function deleteMarker() {
             marker.setMap(null);
             marker=null;
-            map.setCenter(latlng);
+            map.setCenter(new google.maps.LatLng(31.95, 35.94));
         }
     </script>
     <!-- Load user progress -->
@@ -578,4 +591,3 @@ function resetForm($form) {
     pybossa.run('phototaggingHorsfield');
 
     </script>
-
