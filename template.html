@@ -9,7 +9,7 @@
 <!-- jQuery cookie -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" type="text/javascript"></script>
 <!-- Annotorious -->
-<script src="http://annotorious.github.io/latest/annotorious.min.js" type="text/javascript"></script><script <src="http://annotorious.github.io/latest/anno-fancybox.min.js" type="text/javascript"></script>
+<script src="http://annotorious.github.io/latest/annotorious.min.js" type="text/javascript"></script>
 <script src="http://annotorious.github.io/latest/anno-fancybox.min.js" type="text/javascript"></script>
 
 <!-- jquery form serializer -->
@@ -19,38 +19,40 @@
 <!-- jquery ui -->
 <script src="https://code.jquery.com/ui/1.8.1/jquery-ui.min.js" type="text/javascript"></script>
 
+<!-- Get fancy box selector working --> 
+<script>
+   anno.addPlugin('FancyBoxSelector', { activate: true });
+</script>
 
-    <script>
-       anno.addPlugin('FancyBoxSelector', { activate: true });
-    </script>
-    <style>
-        .messageMargin {
-            margin-top: 15px;
-        }
-        .loadingIcon {
-            max-width:100%;
-        }
-        .none {
-            display:none;
-        }
-        .ui-autocomplete {
-            background-color: white;
-            width: 300px;
-            border: 1px solid #cfcfcf;
-            list-style-type: none;
-            padding: 10px;
+<!-- App specific styles -->
+<style>
+    .messageMargin {
+        margin-top: 15px;
+    }
+    .loadingIcon {
+        max-width:100%;
+    }
+    .none {
+        display:none;
+    }
+    .ui-autocomplete {
+        background-color: white;
+        width: 300px;
+        border: 1px solid #cfcfcf;
+        list-style-type: none;
+        padding: 10px;
 
-        }
-        #map {
-            height:400px;
-            width:100%;
-            margin-top: 15px;
-        }
-        #keywords .btn-group {
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-    </style>
+    }
+    #map {
+        height:400px;
+        width:100%;
+        margin-top: 15px;
+    }
+    #keywords .btn-group {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>
 
 <!-- The surveys for Chiara -->
     <!-- Basic 1 task -->
@@ -69,7 +71,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
-            <a class="btn btn-large btn-success" href=""https://docs.google.com/forms/d/1lNhBvKqPQlaJpWcvbEMfOGlixf7BHC__9w9JYs0Yw_4/viewform">Of course! Take me to the survey!</a>
+            <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/1lNhBvKqPQlaJpWcvbEMfOGlixf7BHC__9w9JYs0Yw_4/viewform">Of course! Take me to the survey!</a>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -87,8 +89,7 @@
               <p>
                   Thanks for contributing 25 tasks for the project. We are
                   interested in knowing how you found out about us.
-                  <strong>Could you please answer two questions in a short
-                      survey?</strong>
+                  <strong>Could you please answer two questions in a short survey?</strong>
               </p>
           </div>
           <div class="modal-footer">
@@ -101,7 +102,7 @@
 
     <!-- Success and Error Messages for the user -->
 
-    <div class=""messageMargin">
+    <div class="messageMargin">
        <div id="success" class="alert alert-success none">
           <h2>Well done!</h2>
           <p>
@@ -168,10 +169,6 @@
           <button id="status" type="button" class="btn btn-default btn-type disabled" name="loading" value="loading">Loading photo</button>
         </div>
 
-
-    </div><!-- End of Skeleton Row -->
-
-    <div class="row skeleton"><!-- Start Skeleton Row-->
 
        <div class="col-md-12"><!-- Start of Photo DIV (column) -->
           <div id="imgContainer" >
@@ -260,10 +257,9 @@
             <div id="map">
             </div>
             <div>
-                <label class="control-label" for="site">Look up a Pleiades Identifier: </label>
-                <select class="form-control" id="pleiadesID" name="pleiadesID"
-                       placeholder="Type the place name and choose a value">
-                         <option value="">Please choose a place</option>
+                <label class="control-label" for="pleiadesID">Look up a Pleiades Identifier: </label>
+                <select class="form-control" id="pleiadesID" name="pleiadesID">
+                    <option>Please choose a place</option>
                     <option value="697728" >Amman, Jordan - Amman/Philadelpheia</option>
                     <option value="678158">Jerash - Gerasa/Antiochia ad Chrysorhoam</option>
                     <option value="697725">Petra, Jordan</option>
@@ -586,7 +582,6 @@ function resetForm($form) {
             $("#loading").hide();
             $("#finish").fadeIn(500);
         }
-        $('#imgLink').tooltip();
     });
     pybossa.run('phototaggingHorsfield');
 
