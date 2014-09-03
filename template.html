@@ -43,6 +43,11 @@
         padding: 10px;
 
     }
+    .largeOptions {
+        max-height: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     #map {
         height:400px;
         width:100%;
@@ -164,7 +169,7 @@
        </div>
 
        <h1 id="step1">
-           Please help us to tag this photograph
+           Please help us tag this photograph
        </h1>
        
        <div class="btn-group">
@@ -183,53 +188,210 @@
         
         <div class="col-md-12">
             <h1>
-                Enter some information about the image you can see
+                Enter some information about the photograph
             </h1>
         </div>
 
         <div class="col-md-6">
             <h2>
-                Choose some keywords
+                Choose keywords:
             </h2>
             <p>
                 You can choose multiple keywords for each photograph shown above.
                 These four dropdowns present different keywords for: activities, 
-                objects shown, theme of photo, cultural identity displayed.
+                things, theme of photo, and people displayed.
             </p>
         
             <div class="btn-group" id="keywords">
                 
                 <!-- The activities dropdown --> 
-                <select id="activities" class="multiselect" 
-                        multiple="multiple">
-                    <option value="Agriculture">Agriculture</option>
-                    <option value="Craft">Craft</option>
-                    <option value="Dance">Dance</option>
-                    <option value="Excavation">Excavation</option>
+                <select id="activities" class="multiselect" multiple="multiple">
+                    <option value="agriculture">agriculture</option>
+                    <option value="craft">craft</option>
+                    <option value="dance">dance</option>
+                    <option value="excavation">excavation</option>
+                    <option value="field_camp">field camp</option>
+                    <option value="food_preparation">food preparation</option>
+                    <option value="food_serving">food serving</option>
+                    <option value="horticulture">horticulture</option>
+                    <option value="hunting">hunting</option>
+                    <option value="initiation">initiation</option>
+                    <option value="landscape">landscape</option>
+                    <option value="mining">mining</option>
+                    <option value="procession">procession</option>
+                    <option value="reconstruction">reconstruction</option>
+                    <option value="recreation">recreation</option>
+                    <option value="religion">religion</option>
+                    <option value="site_view">site view</option>
+                    <option value="slavery">slavery</option>
+                    <option value="sport">sport</option>
+                    <option value="surveying">surveying</option>
+                    <option value="time_keeping">time keeping</option>
+                    <option value="trade">trade</option>
+                    <option value="transport">transport</option>
+                    <option value="warfare">warfare</option>
+                    <option value="wedding">wedding</option>
                 </select>
 
-                <!-- The object type dropdown --> 
-                <select id="object" class="multiselect" multiple="multiple">
-                    <option value="Aeroplane">Aeroplane</option>
-                    <option value="Altar">Altar</option>
-                    <option value="Animal">Animal</option>
-                    <option value="Ape">Ape</option>
+                <!-- The things type dropdown -->  
+                <select id="things" class="multiselect" multiple="multiple">
+                    <option value="aeroplane">aeroplane</option>
+                    <option value="altar">altar</option>
+                    <option value="animal">animal</option>
+                    <option value="ape">ape</option>
+                    <option value="apse">apse</option>
+                    <option value="aqueduct">aqueduct</option>
+                    <option value="arch">arch</option>
+                    <option value="architrave">architrave</option>
+                    <option value="axe">axe</option>
+                    <option value="bailey">bailey</option>
+                    <option value="basin">basin</option>
+                    <option value="basket">basket</option>
+                    <option value="bell">bell</option>
+                    <option value="bicycle">bicycle</option>
+                    <option value="bird">bird</option>
+                    <option value="boat">boat</option>
+                    <option value="bookcase">bookcase</option>
+                    <option value="bow">bow</option>
+                    <option value="branch">branch</option>
+                    <option value="bridge">bridge</option>
+                    <option value="building">building</option>
+                    <option value="camel">camel</option>
+                    <option value="car">car</option>
+                    <option value="carrying_chair">carrying-chair</option>
+                    <option value="cart">cart</option>
+                    <option value="castle">castle</option>
+                    <option value="cemetery">cemetery</option>
+                    <option value="chair">chair</option>
+                    <option value="chicken">chicken</option>
+                    <option value="church">church</option>
+                    <option value="cistern">cistern</option>
+                    <option value="coffin">coffin</option>
+                    <option value="columbarium">columbarium</option>
+                    <option value="column">column</option>
+                    <option value="column_capital">column capital</option>
+                    <option value="cornice">cornice</option>
+                    <option value="courtyard">courtyard</option>
+                    <option value="cow">cow</option>
+                    <option value="crocodile">crocodile</option>
+                    <option value="dagger">dagger</option>
+                    <option value="dam">dam</option>
+                    <option value="dighouse">dighouse</option>
+                    <option value="dog">dog</option>
+                    <option value="dolmen">dolmen</option>
+                    <option value="donkey">donkey</option>
+                    <option value="door">door</option>
+                    <option value="field">field</option>
+                    <option value="fish">fish</option>
+                    <option value="flag">flag</option>
+                    <option value="fortress">fortress</option>
+                    <option value="frieze">frieze</option>
+                    <option value="furniture">furniture</option>
+                    <option value="garden">garden</option>
+                    <option value="gateway">gateway</option>
+                    <option value="gun">gun</option>
+                    <option value="horse">horse</option>
+                    <option value="house">house</option>
+                    <option value="hut">hut</option>
+                    <option value="inscription">inscription</option>
+                    <option value="island">island</option>
+                    <option value="jewelry">jewelry</option>
+                    <option value="ladder">ladder</option>
+                    <option value="latrine">latrine</option>
+                    <option value="lion">lion</option>
+                    <option value="market">market</option>
+                    <option value="milestone">milestone</option>
+                    <option value="monastery">monastery</option>
+                    <option value="monolith">monolith</option>
+                    <option value="mosaic">mosaic</option>
+                    <option value="mosque">mosque</option>
+                    <option value="mountain">mountain</option>
+                    <option value="museum">museum</option>
+                    <option value="ostrich">ostrich</option>
+                    <option value="ox">ox</option>
+                    <option value="palace">palace</option>
+                    <option value="pediment">pediment</option>
+                    <option value="plant">plant</option>
+                    <option value="pulpit">pulpit</option>
+                    <option value="quadruped">quadruped</option>
+                    <option value="railway">railway</option>
+                    <option value="river">river</option>
+                    <option value="reed">reed</option>
+                    <option value="relief">relief</option>
+                    <option value="reservoir">reservoir</option>
+                    <option value="road">road</option>
+                    <option value="rock">rock</option>
+                    <option value="room">room</option>
+                    <option value="scaffolding">scaffolding</option>
+                    <option value="sceptre">sceptre</option>
+                    <option value="school">school</option>
+                    <option value="scorpion">scorpion</option>
+                    <option value="sea">sea</option>
+                    <option value="shrine">shrine</option>
+                    <option value="skull">skull</option>
+                    <option value="skeleton">skeleton</option>
+                    <option value="slag">slag</option>
+                    <option value="snake">snake</option>
+                    <option value="spear">spear</option>
+                    <option value="spring">spring</option>
+                    <option value="stairs">stairs</option>
+                    <option value="statue">statue</option>
+                    <option value="stela">stela</option>
+                    <option value="street">street</option>
+                    <option value="sundial">sundial</option>
+                    <option value="synagogue">synagogue</option>
+                    <option value="table">table</option>
+                    <option value="temple">temple</option>
+                    <option value="tent">tent</option>
+                    <option value="tetrapylon">tetrapylon</option>
+                    <option value="theatre">theatre</option>
+                    <option value="throne">throne</option>
+                    <option value="tomb">tomb</option>
+                    <option value="tortoise">tortoise</option>
+                    <option value="tower">tower</option>
+                    <option value="tree">tree</option>
+                    <option value="truck">truck</option>
+                    <option value="umbrella">umbrella</option>
+                    <option value="vault">vault</option>
+                    <option value="vessel">vessel</option>
+                    <option value="wall">wall</option>
+                    <option value="wall_painting">wall painting</option>
+                    <option value="water_wheel">water wheel</option>
+                    <option value="weaving">weaving</option>
+                    <option value="well">well</option>
+                    <option value="window">window</option>
                 </select>
 
                 <!-- The theme type dropdown --> 
                 <select id="theme" class="multiselect" multiple="multiple">
-                    <option value="Animal">Animal</option>
-                    <option value="Architecture">Architecture</option>
-                    <option value="Armour">Armour</option>
-                    <option value="Container">Container</option>
+                    <option value="animal">animal</option>
+                    <option value="architecture">architecture</option>
+                    <option value="armour">armour</option>
+                    <option value="container">container</option>
+                    <option value="funerary">funerary</option>
+                    <option value="furniture">furniture</option>
+                    <option value="horology">horology</option>
+                    <option value="manufacture">manufacture</option>
+                    <option value="musical_instrument">musical instrument</option>
+                    <option value="panorama">panorama</option>
+                    <option value="personal_accessory">personal accessory</option>
+                    <option value="plant">plant</option>
+                    <option value="recreation">recreation</option>
+                    <option value="sculpture">sculpture</option>
+                    <option value="tool">tool</option>
+                    <option value="transport">transport</option>
+                    <option value="water_management">water management</option>
+                    <option value="weapons">weapons</option>
+                    <option value="writing">writing</option>
                 </select>
 
-                <!-- The cultural dropdown --> 
-                <select id="cultural" class="multiselect" multiple="multiple">
+                <!-- The people dropdown --> 
+                <select id="people" class="multiselect" multiple="multiple">
                     <option value="American">American</option>
                     <option value="Arab">Arab</option>
                     <option value="Bedouin">Bedouin</option>
                     <option value="Egyptian">Egyptian</option>
+                    <option value="European">European</option>
                 </select>
             </div>
             
@@ -237,22 +399,16 @@
             <!-- Allow other keywords to be generated --> 
             <div class="form-group">
                 <label class="control-label" for="keywordsUser">Other keywords:</label>
-                <input type="text" name="keywordsUser" class="form-control" 
-                       placeholder="If you think other keywords, enter them here separated by commas"
-                       rel="tooltip" data-toggle="tooltip" data-placement="left" 
-                       title="Our keyword list is not complete, if you think of new ones, just add them here">
+                <input type="text" name="keywordsUser" class="form-control" placeholder="If you think other keywords, enter them here separated by commas" rel="tooltip" data-toggle="tooltip" data-placement="left" title="Our keyword list is not complete, if you think of new ones, just add them here">
             </div>
             
-            <hr />
-             
+            <hr />           
             <div class="form-group">
                 <label class="control-label" for="imageID">Identification number: </label>
-                                <input type="text" name="imageID" class="form-control" 
-                       placeholder="The ID number is in the top right corner usually"
-                       rel="tooltip" data-toggle="tooltip" data-placement="left" 
-                       title="Look for a pencil written identifer like - 2008-20">
+                <input type="text" name="imageID" class="form-control" placeholder="The ID number is in the top right corner usually" rel="tooltip" data-toggle="tooltip" data-placement="left" title="Look for a pencil written identifer like - P2008-20">
              </div>
             
+            <p>&nbsp;</p>
             <div>
                 <label class="control-label" for="orientation">Image orientation: </label>
                 <select class="form-control" id="orientation" name="orientation">
@@ -260,38 +416,40 @@
                     <option value="landscape" >Landscape</option>
                     <option value="portrait">Portrait</option>
                     <option value="other">Other</option>
-                    </select>
+                </select>
             </div>
 
-             <div class="form-group">
+            <p>&nbsp;</p>
+            <div class="form-group">
                 <label class="control-label" for="imageLabel">Transcribe the label: </label>
-                <textarea class="form-control" rows="5" id="imageLabel" name="imageLabel"
-                          placeholder="Transcribe the white label from the image above. If you can, try and keep the same case and style."></textarea>
+                <textarea class="form-control" rows="5" id="imageLabel" name="imageLabel" placeholder="Transcribe the white label from the image above. If you can, try and keep the same case and style."></textarea>
              </div>
 
              <div class="form-group">
                 <label class="control-label" for="comments">Your Comments</label>
-                <textarea class="form-control" rows="5" id="comments" name="comments"
-                          placeholder="Add any comments you may have about the photo or your experience with this task."></textarea>
+                <textarea class="form-control" rows="5" id="comments" name="comments" placeholder="Add any comments you may have about the photo or your experience with this task."></textarea>
              </div>
 
         </div>
-
 
     <div class="col-md-6">
         <!-- Geographical grouping -->
         <div class="form-group" id="geo">
 
             <div>
-                <label class="control-label" for="site" >Geo-reference the site</label>
+                <label class="control-label" for="site" >Geo-reference the site:</label>
+
+                <!-- Note: must not be a button or it will submit form --> 
+                <a href="#" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#mapModal"><i class="glyphicon glyphicon-eye-open"></i> Mapping hints</a>
+                <p>&nbsp;</p>
+                <!-- End of help button --> 
+
                 <input type="text" class="form-control" id="toSearch" name="toSearch"
                        placeholder="Locate the photograph on the map" rel="tooltip" data-toggle="tooltip" data-placement="left" title="Type a placename and then select from the suggestions. Jerash, Amman (Philadelphia) or Petra">
-                <input type="hidden"  name="lat" value="" id="lat">
-                <input type="hidden"  name="lon" value="" id="lon">
+                <input type="hidden" name="lat" value="" id="lat">
+                <input type="hidden" name="lon" value="" id="lon">
             </div>
-            <!-- Note must not be a button or it will submit form --> 
-            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#mapModal"><i class="glyphicon glyphicon-eye-open"></i> Mapping hints</a>
-            <!-- End of help button --> 
+            
             <!-- The map to show --> 
             <div id="map"></div>
             <p>
@@ -299,26 +457,31 @@
             </p>
             
             <!-- Look up a Pleiades ID --> 
+            <p>&nbsp;</p>
             <div>
                 <label class="control-label" for="pleiadesID">Look up a Pleiades Identifier: </label>
                 <select class="form-control" id="pleiadesID" name="pleiadesID">
                     <option>Please choose a place</option>
-                    <option value="697728" >Amman, Jordan - Amman/Philadelpheia</option>
+                    <option value="697728">Amman, Jordan - Amman/Philadelpheia</option>
+                    <option value="697736">Bayir – Qasr Bayir</option>
                     <option value="687856">Bethlehem</option>
                     <option value="678378">Beth-Shan - Scythopolis</option>
                     <option value="678106">Damascus, Syria</option>
+                    <option value="697709">Dead Sea - Mortuum Mare/Asphaltitis L.</option>
+                    <option value="697726">Feinan: Khirbet el Nahas – Phaino</option>
                     <option value="668261">Homs, Syria - Emesa</option>
                     <option value="678158">Jerash, Jordan - Gerasa/Antiochia ad Chrysorhoam</option>
                     <option value="687928">Jerusalem, Israel - Ierusalem/Hierosolyma/Col. Aelia Capitolina</option>
                     <option value="697725">Petra, Jordan</option>
                     <option value="688028">Shilo, Israel - Shiloh or Silo</option>
                     </select>
-              
+
+                <p>&nbsp;</p>
                 <h4>
                     Why use Pleiades tags
                 </h4>
                 <p>
-                    <a rel="tooptip" data-placement="top" data-toggle="tooltip" title="" data-original-title="The Pleiades site - opens in a new window" href="http://pleiades.stoa.org/" target="_blank">Pleiades</a> is a community-built gazetteer and graph of ancient places.. By adding these identifiers, we can assist their efforts as documented in this <a href="http://sgillies.net/blog/1103/flickr-support-for-ancient-world-places">blog post</a> by Sean Gillies. 
+                    <a rel="tooptip" data-placement="top" data-toggle="tooltip" title="" data-original-title="The Pleiades site - opens in a new window" href="http://pleiades.stoa.org/" target="_blank">Pleiades</a> is a community-built gazetteer and graph of ancient places. By adding these identifiers, we can assist their efforts as documented in this <a href="http://sgillies.net/blog/1103/flickr-support-for-ancient-world-places">blog post</a> by Sean Gillies. 
                 </p>
             </div>
             
@@ -369,7 +532,7 @@
              <div class="modal-body">
                  
                  <p>
-                     The mapping component of this exercise has 3 different layers.
+                     The mapping component of this exercise has three different layers.
                      We are very fortunate to be able to use the fantastic Imperium
                      map layer, produced by Johan Åhfeldt for the Pelagios project. 
                      This has ancient place names from the Barrington Atlas of the Classical 
@@ -421,63 +584,38 @@
              </div><!-- Modal header -->
              <div id="0" class="modal-body" style="display:none">
                 <p>
-                    The application is really simple. It loads a photo from 
-                    our <a href="http://flickr.com/micropasts">Flickr feed</a> and asks 
-                    you to <strong>tag all the elements that you recognise</strong>. 
-                    These can be anything from 'objects' such as a <i>column</i> 
-                    or a <i>camel</i>, an activity taking place such as 
-                    <i>agriculture</i> or <i>transport</i>, a certain cultural 
-                    group of people such as <i>Bedouin</i> or <i>European</i>, 
-                    and/or more general themes such as simply <i>architecture</i>.
+                    The application is really simple. It loads a photo from our <a href="http://flickr.com/micropasts">Flickr feed</a> and asks you to <strong>tag all the elements that you recognise</strong>. These can be anything from a <i>column</i> to a <i>camel</i>, an activity taking place such as <i>agriculture</i> or <i>transport</i>, a certain cultural group of people such as <i>Bedouin</i> or <i>European</i> - or even specific individuals, and/or more general themes such as simply <i>architecture</i>.
                 </p>
                 <p>
-                    You then hover the mouse over the elements that you identify, 
-                    and then by clicking and dragging you will draw a box. 
-                    A text box will appear, in which you will be able to type the 
-                    name of that element and save it.
+                    You then hover the mouse over the elements that you identify, and then by clicking and dragging you will draw a box. A text box will appear, in which you will be able to type the name of that element and save it.
+                </p>
+                <p>
+                   If you recognise a specific person in the photo, this is great! Please tag their names in this way: <i>Last name, first name</i>; for example: Horsfield, George.
                 </p>
                 <p>
                     <img src="https://farm3.staticflickr.com/2918/14443363844_d99632eb9b.jpg" width="500" height="332" alt="An example of the tagging interface"/>
                 </p>
                 <p>
-                    You can do this as many times as you want. If you wish to 
-                    edit a tag or delete it altogether, you can do this by 
-                    hovering over the relevant box, and then selecting either 
-                    the pencil tool for editing, or the 'x' for deleting.
+                    You can do this as many times as you want. If you wish to edit a tag or delete it altogether, you can do this by hovering over the relevant box, and then selecting either the pencil tool for editing, or the 'x' for deleting.
                 </p>
                 
              </div>
              <div id="1" class="modal-body" style="display:none">
                 <p>
-                    If the photo has a caption, please try to transcribe it as
-                    accurately as possibly into the transcribe label box.
+                    As you can see, you have four buttons representing four categories of suggested keywords: Activity, Things, Theme and People. Clicking on each one of these will bring up a list of suggested keywords to be used in tagging. You can refer to these lists when tagging each photo, but you can also add your own tags. Both annotating elements on the photograph and selecting keywords from these lists are very helpful.
                 </p>
                 <p>
-                    As you can see, you have four buttons representing four 
-                    categories of suggested keywords: Activity, Object, Theme and 
-                    Cultural Group. Click on each one of these will bring up a 
-                    list of suggested keywords to be used in tagging. 
-                    You can refer to these lists when tagging each photo, 
-                    but you can also add your own tags. Under the photo you will 
-                    find a text box in which you can add any comments you might 
-                    have.
+                    Additional information incldues the photo's ID (starts with P2008, and appears in almost all photos), the photo's orientation (landscape, portrait, or other if it's a square), as well as comments, if you have anything else you want to mention. If the photo has a caption, please try to transcribe it as accurately as possibly into the transcribe label box.
                 </p>
                 <p>
-                    We would also like your help to give the photograph coordinates
-                    and a Pleiades Identifier. If you go to the geo-code section on the right 
-                    hand side and type a place name (refer to mapping hints for help)
-                    you can select the place depicted in the photo. Once you have 
-                    done this, try choosing a Pleiades identifier from the drop down list 
-                    below.
+                    We would also like your help to give the photograph coordinates and a Pleiades Identifier. If you go to the geo-code section on the right hand side and type a place name (refer to mapping hints for help) you can select the place depicted in the photo. Once you have done this, try choosing a Pleiades Identifier from the drop down list below.
                 </p>
-                <img class="thumbnail" src="http://micropasts.org/wp-content/uploads/2014/09/geocoder.png" width="300" height="200" alt="Geocoder view" />
+                <img src="http://micropasts.org/wp-content/uploads/2014/09/Jerash_Geocoder.png" width="600" height="465" alt="Geocoder view" />
                 <p>
-                    During the task, you can always return to this tutorial via 
-                    the "Help" button.
+                    During the task, you can always return to this tutorial via the <i class="glyphicon glyphicon-eye-open"></i> Tutorial button.
                 </p>
                 <p>
-                    <i class="glyphicon glyphicon-eye-open"></i> To find out 
-                    how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
+                    To find out how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
                 </p>
              </div>
           <!-- End of stepped modal body -->
@@ -499,7 +637,8 @@
                 placement: $(this).data("placement") || 'top'
             });
             $('.multiselect').multiselect({
-            numberDisplayed: 2
+            numberDisplayed: 2,
+            enableFiltering: true
             });
         });
     </script>
@@ -765,8 +904,8 @@ function resetForm($form) {
                     task.answer = $("#phototagging").serializeJSON();
                     task.answer.annotations = anno.getAnnotations();
                     task.answer.theme = $('#theme').val();
-                    task.answer.cultural = $('#cultural').val();
-                    task.answer.object = $('#object').val();
+                    task.answer.people = $('#people').val();
+                    task.answer.things = $('#things').val();
                     task.answer.activities = $('#activities').val();
                     var geojson = {
                        "geometry": {
@@ -790,9 +929,9 @@ function resetForm($form) {
                     resetForm($('#phototagging'));
                     $('input').val('');
                     $( '#theme' ).multiselect('refresh');
-                    $( '#object' ).multiselect('refresh');
+                    $( '#things' ).multiselect('refresh');
                     $( '#activities' ).multiselect('refresh');
-                    $( '#cultural' ).multiselect('refresh');
+                    $( '#people' ).multiselect('refresh');
                     deleteMarker();
                 } else {
                     $("#error").show();
