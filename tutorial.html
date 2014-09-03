@@ -1,35 +1,72 @@
 <div id="modal" class="modal fade">
    <div class="modal-dialog">
       <div class="modal-content">
-         <div class="modal-header"><h3>Photo-tagging Tutorial</h3></div>
-            <div id="0" class="modal-body" style="display:none">
+          <div class="modal-header">
+                 <h1 class="lead">
+                     Photo-tagging Tutorial
+                 </h1>
+             </div><!-- Modal header -->
+             <div id="0" class="modal-body" style="display:none">
                 <p>
-                The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you to <strong>tag all the elements that you recognise</strong>. These can be anything from 'objects' such as a <i>column</i> or a <i>camel</i>, an activity taken place such as <i>agriculture</i> or <i>transport</i>, a certain cultural group of people such as <i>Bedouin</i> or <i>European</i>, and/or more general themes such as simply <i>architecture</i>.
+                    The application is really simple. It loads a photo from 
+                    our <a href="http://flickr.com/micropasts">Flickr feed</a> and asks 
+                    you to <strong>tag all the elements that you recognise</strong>. 
+                    These can be anything from 'objects' such as a <i>column</i> 
+                    or a <i>camel</i>, an activity taking place such as 
+                    <i>agriculture</i> or <i>transport</i>, a certain cultural 
+                    group of people such as <i>Bedouin</i> or <i>European</i>, 
+                    and/or more general themes such as simply <i>architecture</i>.
                 </p>
                 <p>
-                You then hover the mouse over tha elements that you identify, and then by clicking and dragging you will draw a box. A text box will appear, in which you will be able to type the name of that element and save it.
+                    You then hover the mouse over the elements that you identify, 
+                    and then by clicking and dragging you will draw a box. 
+                    A text box will appear, in which you will be able to type the 
+                    name of that element and save it.
                 </p>
                 <p>
-                <img src="https://farm3.staticflickr.com/2918/14443363844_d99632eb9b.jpg" width="500" height="332" alt="An example of the tagging interface"/>
+                    <img src="https://farm3.staticflickr.com/2918/14443363844_d99632eb9b.jpg" width="500" height="332" alt="An example of the tagging interface"/>
                 </p>
                 <p>
-                You can do this as many times as you want. If you wish to edit a tag or delete it altogether, you can do this by hovering over the relevant box, and then selecting either the pencil tool for editing, or the 'x' for deleting.
-                </p> 
+                    You can do this as many times as you want. If you wish to 
+                    edit a tag or delete it altogether, you can do this by 
+                    hovering over the relevant box, and then selecting either 
+                    the pencil tool for editing, or the 'x' for deleting.
+                </p>
+                
+             </div>
+             <div id="1" class="modal-body" style="display:none">
                 <p>
-                If the photo has a caption, please select that area and type in the caption's text.
-                </p> 
+                    If the photo has a caption, please try to transcribe it as
+                    accurately as possibly into the transcribe label box.
+                </p>
                 <p>
-                As you can see, you have four buttons representing four categories of suggested keywords: Activity, Object, Theme and Cultural Group. Click on each one of these will bring up a list of suggested keywords to be used in tagging. You can refer to these lists when tagging each photo, but you can also add your own tags. Under the photo you will find a text box in which you can add any comments you might have. 
-                </p> 
-            </div>
-            <div id="1" class="modal-body" style="display:none">
+                    As you can see, you have four buttons representing four 
+                    categories of suggested keywords: Activity, Object, Theme and 
+                    Cultural Group. Click on each one of these will bring up a 
+                    list of suggested keywords to be used in tagging. 
+                    You can refer to these lists when tagging each photo, 
+                    but you can also add your own tags. Under the photo you will 
+                    find a text box in which you can add any comments you might 
+                    have.
+                </p>
                 <p>
-                During the task, you can always return to this tutorial via the "Help" button.
-                </p> 
+                    We would also like your help to give the photograph coordinates
+                    and a Pleiades Identifier. If you go to the geo-code section on the right 
+                    hand side and type a place name (refer to mapping hints for help)
+                    you can select the place depicted in the photo. Once you have 
+                    done this, try choosing a Pleiades identifier from the drop down list 
+                    below.
+                </p>
+                <img class="thumbnail" src="http://micropasts.org/wp-content/uploads/2014/09/geocoder.png" width="300" height="200" alt="Geocoder view" />
                 <p>
-                To find out how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
-                </p> 
-            </div>
+                    During the task, you can always return to this tutorial via 
+                    the "Help" button.
+                </p>
+                <p>
+                    <i class="glyphicon glyphicon-eye-open"></i> To find out 
+                    how the project is progressing, to suggest changes to this application or to propose new research ideas based what you have tagged, please have a look at our <a href="http://community.micropasts.org" title="Community forum">community forum</a>.
+                </p>
+             </div>
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn btn-default">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
