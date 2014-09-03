@@ -7,7 +7,7 @@ This application has three files:
 *  template.html: the view for every task and deal with the data of the answers.
 *  tutorial.html: a simple tutorial for the volunteers.
 
-![alt screenshot](http://i.imgur.com/RFfU4uT.png)
+![alt screenshot](https://farm3.staticflickr.com/2918/14443363844_d99632eb9b.jpg)
 
 Testing the application
 =======================
@@ -36,8 +36,3 @@ LICENSE
 =======
 
 Please, see the COPYING file.
-
-
-Acknowledgments
-===============
-The thumbnail has been created using a [photo](http://www.flickr.com/photos/cambodia4kidsorg/260004685/in/photostream/) from cambodia4kidsorg (license CC BY 2.0). 
