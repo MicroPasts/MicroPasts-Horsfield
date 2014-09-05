@@ -124,16 +124,16 @@
               photograph to try if you wish!
           </p>
        </div>
-       <div id="loading" class="alert alert-info none">
+      <div id="loading" class="alert alert-info" style="display:none;">
           <img src="/static/img/loading.gif">Loading next task...
        </div>
-       <div id="taskcompleted" class="alert alert-info none">
+      <div id="taskcompleted" class="alert alert-info" style="display:none;">
           <h2>The task has been completed!</h2>
           <p>
               Thank you for participating!
           </p>
        </div>
-       <div id="finish" class="alert alert-success none">
+      <div id="finish" class="alert alert-success" style="display:none;">
           <h2>Congratulations!</h2>
           <p>
               You have participated in all available tasks!
@@ -146,7 +146,7 @@
                  other applications</a>
           </div>
        </div>
-       <div id="error" class="alert alert-error none">
+      <div id="error" class="alert alert-error" style="display:none;">
           <a class="close">×</a>
           <h2>Error!</h2>
           <p>
@@ -184,9 +184,8 @@
        <div class="btn-group">
            <button id="status" type="button" class="btn btn-default btn-type disabled" name="loading" value="loading">Loading photo</button>
            <button id="reset" type="button" class="btn btn-default btn-type">Reset annotator</button>
+           <button id="skip" type="button" class="btn btn-default btn-type">Skip to form</button>
        </div>
-
-
        <div class="col-md-12"><!-- Start of Photo DIV (column) -->
           <div id="imgContainer" >
              <span id="photo-link">
@@ -196,14 +195,18 @@
        </div><!-- End of Photo DIV (column) -->
     <form id="phototagging" role="form">
         
-        <div class="col-md-12">
-            <h1>
+        <div class="col-md-12 text-center">
+            <h1 id="title">
                 Enter some information about the photograph
             </h1>
         </div>
 
         <div class="col-md-6">
-           
+        <div class="form-group">
+           <label class="control-label" for="imageID">Identification number: </label>
+           <input type="text" name="imageID" class="form-control" placeholder="The ID number is usally in the top right corner" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Look for a pencil written identifer such as P2008-20">
+       </div>
+            <a href="#" class="btn btn-default btn-type" id="top">Go back to top of image</a>
         
             <div class="btn-group" id="keywords">
                 
@@ -212,11 +215,7 @@
                 <textarea class="form-control" rows="5" id="imageLabel" name="imageLabel" placeholder="Transcribe the white label from the image above. If you can, try and keep the same case and style."></textarea>
              </div>
                 
-                
-                 <div class="form-group">
-                <label class="control-label" for="imageID">Identification number: </label>
-                <input type="text" name="imageID" class="form-control" placeholder="The ID number is in the top right corner usually" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Look for a pencil written identifer such as P2008-20">
-             </div>
+      
                 <!-- The activities dropdown -->
                   <h2>
                 Choose keywords:
@@ -655,6 +654,16 @@
 			});
           	$("#pleiadesID").select2();
             $("#orientation").select2();
+          	$("#skip").click(function() {
+    		$('html, body').animate({
+        		scrollTop: $("#title").offset().top
+    			}, 500);
+			});
+                $("#top").click(function() {
+    		$('html, body').animate({
+        		scrollTop: $("#step1").offset().top
+    			}, 500);
+			});
             
 //            $('.multiselect').multiselect({
 //            numberDisplayed: 2,
@@ -924,15 +933,15 @@
                     task.answer.geojson = geojson;
                     console.log(task.answer);
                     pybossa.saveTask(task.id, task.answer).done(function() {
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        $("#success").fadeIn(500).fadeOut(500);
+                        $("#loading").fadeIn(500).fadeOut(500);
                         deferred.resolve();
                     });
                     
                     $('input').val('');
                     $('select').val('');
-//                    $( '#theme' ).multiselect('refresh');
-//                    $( '#things' ).multiselect('refresh');
-//                    $( '#activities' ).multiselect('refresh');
-//                    $( '#people' ).multiselect('refresh');
+
                     $('#pleiadesID').select2("val", "");
                     $('#orientation').select2("val", "");
                     $('#lat').val('');
@@ -942,12 +951,11 @@
                     $('#imageLabel').val('');
                     $('#comments').val('');
                   	marker.setMap(null);
-                  marker = new google.maps.Marker({
-        			map: map,
-        			draggable: true
+                  	marker = new google.maps.Marker({
+        				map: map,
+        				draggable: true
       				});
-                  $("html, body").animate({ scrollTop: 0 }, "slow");
-                    //deleteMarker();
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
                 } else {
                     $("#error").show();
                 }
