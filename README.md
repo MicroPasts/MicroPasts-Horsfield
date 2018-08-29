@@ -1,6 +1,8 @@
 PyBossa photo tagging application
 =================================
 
+[![DOI](https://www.zenodo.org/badge/20326003.svg)](https://www.zenodo.org/badge/latestdoi/20326003)
+
 This application has three files:
 
 *  createTasks.py: for creating the application in PyBossa, and fill it with some tasks.
